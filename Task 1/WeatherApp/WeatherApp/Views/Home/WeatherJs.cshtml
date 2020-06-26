@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "WeatherJS";
+}
+
+<h2>WeatherJS</h2>
+<p id="name"></p>
+<p id="temp"></p>
+<p id="humidity"></p>
+<button>Get Weather</button>
+
+<script>
+    $(document).ready(function () {
+        $("button").click(function () {
+            $.get("api.openweathermap.org/data/2.5/weather?q=Cleveland&APPID=491a2211877377363822719d1f71f860&units=imperial", function (response) {
+                //response
+                $("#name").text(response.name);
+                $("temp").text(response.main.temp);
+                $("#humidity").text(response.main.humidity);
+            });
+        });
+    });
+</script>
